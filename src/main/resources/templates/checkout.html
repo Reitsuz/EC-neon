@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CHECKOUT</title>
+
+<style>
+body {
+    background: #0b0f1a;
+    color: #00fff0;
+    font-family: 'Courier New', monospace;
+    padding-top: 70px;
+}
+
+/* ヘッダー */
+h1 {
+    text-align: center;
+    color: #ff00ff;
+    text-shadow: 0 0 10px #ff00ff;
+    text-align: center;
+}
+
+/* ボタン */
+a, button {
+    color: #0ff;
+    text-decoration: none;
+    border: 1px solid #0ff;
+    padding: 4px 8px;
+    margin-left: 10px;
+    background: transparent;
+    box-shadow: 0 0 8px #0ff;
+    display: inline-block;
+}
+
+/* カード */
+.card {
+    border: 1px solid #0ff;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 0 0 10px #0ff;
+    background: rgba(0,0,0,0.4);
+}
+
+/* グリッド */
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+</style>
+
+<style>
+.nav {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 10px;
+    z-index: 9999;
+}
+
+</style>
+
+<div class="nav">
+    <a href="/list">ホーム画面へ</a>
+    <a href="/logout">ログアウト</a>
+</div>
+
+</head>
+<body>
+
+<h1>決済確認画面</h1>
+
+<div style="text-align:center; margin-top:30px;">
+    <p>購入を確定しますか？</p>
+</div>
+
+<div style="text-align:center; margin-top:40px;">
+    <a href="/cart/success">確定</a>
+</div>
+
+</div>
+</body>
+</html>

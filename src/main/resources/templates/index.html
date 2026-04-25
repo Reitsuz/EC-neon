@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEON EC</title>
+
+<style>
+body {
+    background: #0b0f1a;
+    color: #00fff0;
+    font-family: 'Courier New', monospace;
+}
+
+/* ヘッダー */
+h1 {
+    text-align: center;
+    color: #ff00ff;
+    text-shadow: 0 0 10px #ff00ff;
+}
+
+/* ボタン */
+a, button {
+    color: #0ff;
+    text-decoration: none;
+    border: 1px solid #0ff;
+    padding: 4px 8px;
+    margin-left: 10px;
+    background: transparent;
+    box-shadow: 0 0 8px #0ff;
+}
+
+/* カード */
+.card {
+    border: 1px solid #0ff;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 0 0 10px #0ff;
+    background: rgba(0,0,0,0.4);
+}
+
+/* グリッド */
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+</style>
+
+<style>
+.nav {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 10px;
+    z-index: 9999;
+}
+
+.nav a {
+    color: #0ff;
+    border: 1px solid #0ff;
+    padding: 8px 12px;
+    text-decoration: none;
+    box-shadow: 0 0 10px #0ff;
+    background: rgba(0,0,0,0.5);
+}
+</style>
+
+<div class="nav">
+
+    <a href="/logout">ログアウト</a>
+</div>
+
+</head>
+
+<body>
+
+<h1>ホーム画面</h1>
+
+<a href="/cart">カート</a>
+
+<hr>
+
+<!-- 商品追加（管理用） -->
+<form action="/add" method="post">
+    <input name="name" placeholder="商品名">
+    <input name="price" type="number" placeholder="価格">
+    <input name="description" placeholder="説明">
+    <button type="submit">追加</button>
+</form>
+
+<hr>
+
+<h2>サンプル商品</h2>
+
+<div class="container">
+
+    <div class="card">
+        <b>NEON SWORD</b><br>
+        5000円<br>
+        光る剣
+    </div>
+
+    <div class="card">
+        <b>CYBER HOODIE</b><br>
+        8000円<br>
+        未来服
+    </div>
+
+    <div class="card">
+        <b>HACKER GLASSES</b><br>
+        12000円<br>
+        UI解析用
+    </div>
+
+    <div class="card">
+        <b>NEURAL CHIP</b><br>
+        20000円<br>
+        脳強化
+    </div>
+
+    <div class="card">
+        <b>DRONE PET</b><br>
+        30000円<br>
+        自律型ドローン
+    </div>
+
+</div>
+
+<hr>
+
+<h2>追加商品</h2>
+
+<div class="container">
+
+    <div class="card" th:each="p : ${products}">
+        <b th:text="${p.name}"></b><br>
+        <span th:text="${p.price} + '円'"></span><br>
+        <span th:text="${p.description}"></span><br>
+
+        <a th:href="@{'/cart/add/' + ${p.id}}">
+            カート追加
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>
